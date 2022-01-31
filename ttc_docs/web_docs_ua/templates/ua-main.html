@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+        {% block content %}
+
+        <br><br>
+
+        <header style="background-image: url('https://images.unsplash.com/photo-1583521214690-73421a1829a9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80')">
+
+
+            <br><br><br>
+
+            <section id="about">
+                <div class="container px-4" id="main-article">
+                    <style>
+                        #main-article {
+                            border-radius: 35px;
+                            background: #f0f0f5;
+                            padding: 50px;
+                            width: 70%;
+                            height: 100%;
+                        }
+                    </style>
+                    <div class="row gx-4 justify-content-center">
+                        <div class="col-lg-8">
+                            <h3 class="text-center">Вирішили переїхати? Ви на вірному шляху!</h3>
+                            <br>
+                            <p class="lead">Більш ніж <strong>4</strong> роки ми успішно допомагаємо людям переїхати до Європи! Більш ніж <strong>150</strong> сімей та всі задоволені!</p>
+                            <br>
+                            <p class="lead"><strong>Нашими цінностями є принципи компанії, які є орієнтиром для виконання роботи:</strong></p>
+                            <ul>
+                                <br>
+                                <li><strong>ПРИСТРАСТЬ</strong> - Ми хочемо бути найкращими у всьому, що ми робимо. Ми працюємо енергійно, залучені та намагаємося бути найкращими у своїй галузі. Ми завжди прагнемо кращих результатів.</li>
+                                <br>
+                                <li><strong>РЕПУТАЦІЯ</strong> - Ми встановлюємо високі стандарти та завжди тримаємо своє слово. Завдяки такому підходу ми здобули довіру клієнтів.</li>
+                                <br>
+                                <li><strong>ЧЕСНІСТЬ</strong> - Ми завжди беремо на себе відповідальність за правильність нашої роботи.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        <br>
+        <br>
+
+        <p class="text-center text-white">ШУКАЙТЕ НАШІ СТАТТІ НИЖЧЕ</p>
+
+        <br>
+        </header>
+
+        <br>
+        <br>
+        <br>
+        <br>
+            <div class="container md-5" action="#" style="width: 70%">
+                    {% for article in page_obj %}
+                        <br>
+                        <div class="col p-4 d-flex flex-column position-static">
+                            <form>
+                                <h3 class="mb-0"><a href="{% url 'ua:article' article.id %}" style="text-decoration: none; color: black;">{{article.title}}</a></h3>
+                                <br>
+                                <p class="card-text mb-auto"><a href="#" style="text-decoration: none; color: black;">{{article.preview}} . . .</a></p>
+                                <br>
+                                <div class="mb-2 text-muted">{{article.date}}</div>
+                             </form>
+                        </div>
+                        <br>
+<!--                        <hr>-->
+                    {% endfor %}
+                <div class="text-center">
+                    <br>
+                    <button class="btn btn-dark text-center"><a href="{% url 'ua:all' %}" style="text-decoration: none; color: white;">читати все</a></button>
+                    <br>
+                    <br>
+                </div>
+
+            </div>
+        {% endblock %}

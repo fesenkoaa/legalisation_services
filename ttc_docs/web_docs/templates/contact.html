@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <section id="contact" style="width: 110%">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="container px-4">
+            <div class="row gx-4 justify-content-center">
+                <div class="col-lg-8">
+                    <h4>Наши контакты</h4>
+                    <br>
+                    <p class="lead"><strong>телефон: </strong> +48 884 797 600</p>
+                    <p class="lead"><strong>email: </strong> info@ttconsulting.com.pl</p>
+                    <p class="lead"><strong>адрес: </strong><a href="https://www.google.com/maps/place/Bankowa+36,+58-500+Jelenia+Góra/@50.9016664,15.7332107,18z/data=!3m1!4b1!4m5!3m4!1s0x470ede25510b482f:0x73c1df93b7146edf!8m2!3d50.9016664!4d15.7337811"  style="text-decoration: none; color: black; text-size: 12px;">
+                        ul. Bankowa 36, Jelenia Gora, Poland
+                    </a></p>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <div class="container px-4">
+            <div class="row gx-4 justify-content-center">
+                <div class="col-lg-8">
+                    <h4>Мы можем связаться с Вами</h4>
+                    <br>
+                    <form action="#" method="post" style="width: 85%;">
+                        {% csrf_token %}
+                        {{ form }}
+                        <button class="btn btn-dark mt-2 px-3" type="submit">отправить</button>
+                    </form>
+                    <br>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </section>
+<br><br>
+{% endblock %}

@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <br>
+    <br>
+    <br>
+
+    <div class="container md-5" action="#" style="width: 60%">
+        <br>
+        <br>
+        <div class="col p-4 d-flex flex-column position-static">
+            <form>
+                <h2 class="mb-0 text-center">{{page_obj.title}}</h2>
+                <br>
+                <br>
+                <br>
+                <p class="card-text mb-auto"><span class="tab"></span>{{page_obj.paragraph1}}</a></p>
+                {% if page_obj.paragraph2 %}
+                    <br>
+                    <p class="card-text mb-auto"><span class="tab"></span>{{page_obj.paragraph2}}</a></p>
+                {%endif%}
+                {% if page_obj.paragraph3 %}
+                    <br>
+                    <p class="card-text mb-auto"><span class="tab"></span>{{page_obj.paragraph3}}</a></p>
+                {%endif%}
+                {% if page_obj.paragraph4 %}
+                    <br>
+                    <p class="card-text mb-auto"><span class="tab"></span>{{page_obj.paragraph4}}</a></p>
+                {%endif%}
+                {% if page_obj.paragraph5 %}
+                    <br>
+                    <p class="card-text mb-auto"><span class="tab"></span>{{page_obj.paragraph5}}</a></p>
+                {%endif%}
+                {% if page_obj.paragraph6 %}
+                    <br>
+                    <p class="card-text mb-auto"><span class="tab"></span>{{page_obj.paragraph6}}</a></p>
+                {%endif%}
+                {% if page_obj.paragraph7 %}
+                    <br>
+                    <p class="card-text mb-auto"><span class="tab"></span>{{page_obj.paragraph7}}</a></p>
+                {%endif%}
+                {% if page_obj.paragraph8 %}
+                <br>
+                    <p class="card-text mb-auto"><span class="tab"></span>{{page_obj.paragraph8}}</a></p>
+                {%endif%}
+                {% if page_obj.paragraph9 %}
+                    <br>
+                    <p class="card-text mb-auto"><span class="tab"></span>{{page_obj.paragraph9}}</a></p>
+                {%endif%}
+                {% if page_obj.paragraph10 %}
+                    <br>
+                    <p class="card-text mb-auto"><span class="tab"></span>{{page_obj.paragraph10}}</a></p>
+                {%endif%}
+                <br>
+
+                    {% if page_obj.advise.text %}
+                        <br>
+                        <section id="advise">
+                            <div class="container px-4" id="main-article">
+                                <style>
+                                    #advise {
+                                        border-radius: 15px;
+                                        background: #e6e6ff;
+                                        padding: 10px;
+                                        width: 100%;
+                                        height: 60%;
+                                    }
+                                </style>
+                                <div class="row gx-2 justify-content-center">
+                                    <div class="col-lg-0">
+                                        <p class="card-text mb-auto"><strong>СОВЕТ:</strong> {{ page_obj.advise.text }}</p>
+                                        <br>
+                                        <p class="card-text mb-auto">Больше советов ищите <a href="{% url 'ru:advises' %}" style="color: black;">здесь</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    {% endif %}
+                <br>
+                {% if page_obj.updated %}
+                    <div class="mb-2 text-muted"><span class="tab"></span>{{page_obj.updated}}</div>
+                {% endif %}
+                <br>
+                <br>
+                <button class="btn btn-dark text-center"><a href="{% url 'ru:reviews' %}" style="text-decoration: none; color: white;">оставить отзыв</a></button>
+            </form>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+    </div>
+{% endblock %}

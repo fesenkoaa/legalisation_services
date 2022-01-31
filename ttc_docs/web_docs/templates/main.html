@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+        {% block content %}
+
+        <br><br>
+
+<!--        <header style="background-image: url('https://images.unsplash.com/photo-1562654501-a0ccc0fc3fb1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2832&q=80')">-->
+<!--            bg below is nice-->
+        <header style="background-image: url('https://images.unsplash.com/photo-1583521214690-73421a1829a9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80')">
+    <br><br><br>
+
+        <section id="about">
+            <div class="container px-4" id="main-article">
+                <style>
+                    #main-article {
+                        border-radius: 35px;
+                        background: #f0f0f5;
+                        padding: 50px;
+                        width: 70%;
+                        height: 100%;
+                    }
+                </style>
+<!--                + opacity: .86; for semi transparent-->
+                <div class="row gx-4 justify-content-center">
+                    <div class="col-lg-8">
+                        <h3 class="text-center">Решили переехать? Вы на верном пути!</h3>
+                        <br>
+                        <p class="lead">Более чем <strong>4</strong> года мы успешно помогаем людям переехать в Европу! Более чем <strong>150</strong> семьи и все довольны!</p>
+                        <br>
+                        <p class="lead"><strong>Нашими ценностями являются принципы компании, служащие ориентиром для выполнения работы:</strong></p>
+                        <ul>
+                            <br>
+                            <li><strong>СТРАСТЬ</strong> - Мы хотим быть лучшими во всем, что мы делаем. Мы работаем энергично, вовлечены и стараемся быть лучшими в своей отрасли. Мы всегда стремимся к лучшим результатам.</li>
+                            <br>
+                            <li><strong>РЕПУТАЦИЯ</strong> - Мы устанавливаем высокие стандарты и всегда держим свое слово. Благодаря такому подходу мы завоевали доверие клиентов.</li>
+                            <br>
+                            <li><strong>ЧЕСТНОСТЬ</strong> - Мы всегда берем на себя ответственность за правильность нашей работы.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <br>
+        <br>
+
+        <p class="text-center text-white">ИЩИТЕ НАШИ СТАТЬИ НИЖЕ</p>
+
+        <br>
+        </header>
+
+        <br>
+        <br>
+        <br>
+        <br>
+            <div class="container md-5" action="#" style="width: 70%">
+                    {% for article in page_obj %}
+                        <br>
+                        <div class="col p-4 d-flex flex-column position-static">
+                            <form>
+                                <h3 class="mb-0"><a href="{% url 'ru:article' article.id %}" style="text-decoration: none; color: black;">{{article.title}}</a></h3>
+                                <br>
+                                <p class="card-text mb-auto"><a href="#" style="text-decoration: none; color: black;">{{article.preview}} . . .</a></p>
+                                <br>
+                                <div class="mb-2 text-muted">{{article.date}}</div>
+                             </form>
+                        </div>
+                        <br>
+<!--                        <hr>-->
+                    {% endfor %}
+                <div class="text-center">
+                    <br>
+                    <button class="btn btn-dark text-center"><a href="{% url 'ru:all' %}" style="text-decoration: none; color: white;">читать всё</a></button>
+                    <br>
+                    <br>
+                </div>
+
+            </div>
+        {% endblock %}

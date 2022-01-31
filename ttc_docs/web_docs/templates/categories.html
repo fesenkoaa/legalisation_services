@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!--<header style="background-image: url('https://images.unsplash.com/photo-1607706126834-a0fe502e9365?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80')">-->
+
+    <section>
+        <br><br><br><br><br><br>
+            <h3 class="text-center">Выберите желаемую тему:</h3>
+            <br><br>
+            <div class="row center" style="width: 80%;">
+
+                <style>
+                .center {
+                  margin: auto;
+                  width: 60%;
+                  padding: 10px;
+                }
+                </style>
+
+                <div class="column" style="width: 50%">
+                    <h5 class="lead text-center"><strong>ТЕМЫ СТАТЕЙ В РАЗДЕЛЕ "ХОЧУ ПЕРЕЕХАТЬ"</strong></h5><br><br>
+                    {% for category in want %}
+                    <div class="row gx-4 justify-content-center">
+                        <div class="col-lg-8">
+                            <h6 class="lead text-center"><a href="{% url 'ru:category' category.id %}" style="text-decoration: none; color: black;">{{ category.category.upper }}</a></h6>
+                        </div>
+                    </div>
+                    <br><br>
+                    {% endfor %}
+                </div>
+
+                <div class="column" style="width: 50%">
+                    <h5 class="lead text-center"><strong>ТЕМЫ СТАТЕЙ В РАЗДЕЛЕ "ХОЧУ ПЕРЕЕХАТЬ"</strong></h5>
+                    <br><br>
+                    {% for category in already %}
+                    <div class="row gx-4 justify-content-center">
+                        <div class="col-lg-8">
+                            <h6 class="lead text-center"><a href="{% url 'ru:category' category.id %}" style="text-decoration: none; color: black">{{ category.category.upper }}</a></h6>
+                        </div>
+                    </div>
+                    <br><br>
+                    {% endfor %}
+                </div>
+                <br><br><br><br><br><br>
+            </div>
+    </section>
+<br><br><br><br><br><br><br>
+{% endblock %}

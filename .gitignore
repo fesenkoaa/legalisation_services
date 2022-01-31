@@ -1,0 +1,5 @@
+.idea
+/.idea
+/ttc_docs/config.py
+/ttc_docs/venv
+.DS_Store

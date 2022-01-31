@@ -1,0 +1,174 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<br>
+<br>
+<br>
+    <div class="container md-5" action="#" style="width: 70%">
+        <br>
+        <br>
+            {% for article in page_obj %}
+                <br>
+                <div class="col p-4 d-flex flex-column position-static">
+                    <form>
+                        {% if 'advices' in request.path %}
+                        <h4 class="mb-0">Порада {{article.id}}</h4>
+                        <br>
+                        <p class="card-text mb-auto">{{article.text}}</p>
+                        {% else %}
+                        <h3 class="mb-0"><a href="{% url 'ua:article' article.id %}" style="text-decoration: none; color: black;">{{article.title}}</a></h3>
+                        <br>
+                        <p class="card-text mb-auto"><a href="#" style="text-decoration: none; color: black;">{{article.preview}} . . .</a></p>
+                        <br>
+                        <div class="mb-2 text-muted">{{article.updated}}</div>
+                        {% endif %}
+                     </form>
+                </div>
+                <br>
+<!--                <hr>-->
+            {% endfor %}
+    <br><br>
+        {% if page_obj %}
+            {% if 'all-articles' in request.path %}
+                <p class="text-center text-muted">Усі статті написані відповідно до чинного законодавства</p>
+            {% elif 'category' in request.path %}
+                <p class="text-center text-muted">Усі статті написані відповідно до чинного законодавства</p>
+            {% endif %}
+        {% elif not page_obj %}
+            {% if 'all-articles' in request.path %}
+                <p class="text-center text-muted">Поки що статей немає</p>
+            {% elif 'category' in request.path %}
+                <p class="text-center text-muted">Поки що статей немає</p>
+            {% endif %}
+        {% endif %}
+        <br>
+    </div>
+    {% if 'all' in request.path %}
+    <nav aria-label="...">
+          <style>
+              .pagination > li > a
+              {
+                  background-color: white;
+                  color: #52527a;
+              }
+
+              .pagination > li > a:focus,
+              .pagination > li > a:hover,
+              .pagination > li > span:focus,
+              .pagination > li > span:hover
+                {
+                color: #52527a;
+                background-color: #eee;
+                border-color: #ddd;
+            }
+
+            .pagination > .active > a
+            {
+                color: white;
+                background-color: #52527a !Important;
+                border: solid 1px #52527a !Important;
+            }
+
+            .pagination > .active > a:hover
+            {
+                background-color: #52527a !Important;
+                border: solid 1px #52527a;
+            }
+          </style>
+          <ul class="pagination justify-content-center">
+
+              {% if page_obj.has_previous %}
+                  <li class="page-item">
+                      <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+                  </li>
+              {% else %}
+                  <li class="page-item disabled">
+                      <a class="page-link" href="#">Previous</a>
+                  </li>
+              {% endif %}
+
+              {% for n in paginator.page_range %}
+                  {% if page_obj.number == n %}
+                      <li class="page-item active"><a class="page-link" href="?page={{ n }}">{{ n }}</a></li>
+                  {% else %}
+                      <li class="page-item"><a class="page-link" href="?page={{ n }}">{{ n }}</a></li>
+                  {% endif %}
+              {% endfor %}
+
+              {% if page_obj.has_next %}
+                  <li class="page-item">
+                      <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+                  </li>
+              {% else %}
+                  <li class="page-item disabled">
+                      <a class="page-link" href="#">Next</a>
+                  </li>
+              {% endif %}
+          </ul>
+    </nav>
+    {% elif 'advices' in request.path %}
+    <nav aria-label="...">
+          <style>
+              .pagination > li > a
+              {
+                  background-color: white;
+                  color: #52527a;
+              }
+
+              .pagination > li > a:focus,
+              .pagination > li > a:hover,
+              .pagination > li > span:focus,
+              .pagination > li > span:hover
+                {
+                color: #52527a;
+                background-color: #eee;
+                border-color: #ddd;
+            }
+
+            .pagination > .active > a
+            {
+                color: white;
+                background-color: #52527a !Important;
+                border: solid 1px #52527a !Important;
+            }
+
+            .pagination > .active > a:hover
+            {
+                background-color: #52527a !Important;
+                border: solid 1px #52527a;
+            }
+          </style>
+          <ul class="pagination justify-content-center">
+
+              {% if page_obj.has_previous %}
+                  <li class="page-item">
+                      <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+                  </li>
+              {% else %}
+                  <li class="page-item disabled">
+                      <a class="page-link" href="#">Previous</a>
+                  </li>
+              {% endif %}
+
+              {% for n in paginator.page_range %}
+                  {% if page_obj.number == n %}
+                      <li class="page-item active"><a class="page-link" href="?page={{ n }}">{{ n }}</a></li>
+                  {% else %}
+                      <li class="page-item"><a class="page-link" href="?page={{ n }}">{{ n }}</a></li>
+                  {% endif %}
+              {% endfor %}
+
+              {% if page_obj.has_next %}
+                  <li class="page-item">
+                      <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+                  </li>
+              {% else %}
+                  <li class="page-item disabled">
+                      <a class="page-link" href="#">Next</a>
+                  </li>
+              {% endif %}
+          </ul>
+    </nav>
+    {% endif %}
+    <br><br>
+{% endblock %}
