@@ -6,9 +6,9 @@ from django.core.paginator import Paginator
 from .models import *
 from .forms import *
 from django.contrib import messages
-from web_docs.models import *
+from web_docs import models
 import requests
-from config import token, chat_id
+from .config import token, chat_id
 
 
 class UaMainPageView(View):
@@ -130,12 +130,12 @@ class UaTheArticlePageView(View):
 class UaReviewsPageView(View):
 
     def get(self, request):
-        page_obj = Reviews.objects.all().order_by('-time')
+        page_obj = models.Reviews.objects.all().order_by('-time')
         form = ReviewsForm
 
-        chapters = Category.objects.all()
-        want = Category.objects.filter(chapter='want')
-        already = Category.objects.filter(chapter='already')
+        chapters = CategoryUa.objects.all()
+        want = CategoryUa.objects.filter(chapter='want')
+        already = CategoryUa.objects.filter(chapter='already')
 
         context = {
             'page_obj': page_obj,
@@ -147,7 +147,7 @@ class UaReviewsPageView(View):
         return render(request, 'ua-reviews.html', context)
 
     def post(self, request):
-        page_obj = Reviews.objects.all().order_by('-time')
+        page_obj = models.Reviews.objects.all().order_by('-time')
         form = ReviewsForm
 
         chapters = CategoryUa.objects.all()
@@ -231,9 +231,9 @@ class UaContactPageView(View):
 class UaServicesPageView(View):
 
     def get(self, request):
-        work = Services.objects.filter(category=1)
-        family = Services.objects.filter(category=2)
-        other = Services.objects.filter(category=3)
+        work = models.Services.objects.filter(category=1)
+        family = models.Services.objects.filter(category=2)
+        other = models.Services.objects.filter(category=3)
 
         chapters = CategoryUa.objects.all()
         want = CategoryUa.objects.filter(chapter='want')

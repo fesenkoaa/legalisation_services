@@ -2,12 +2,12 @@ from django.shortcuts import render, redirect, HttpResponseRedirect
 from django.urls import reverse
 from django.views import View
 from django.views.generic import ListView
-from web_docs.models import Article, Category, Reviews, Messages
+from .models import *
 from .forms import *
 from django.contrib import messages
 
 import requests
-from config import token, chat_id
+from .config import token, chat_id
 
 
 class MainPageView(View):
